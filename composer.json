@@ -1,8 +1,9 @@
 {
-    "name": "spatie/dropbox-api",
+    "name": "wetmarble/dropbox-api",
     "description": "A minimal implementation of Dropbox API v2",
     "keywords": [
         "spatie",
+        "wetmarble",
         "dropbox-api",
         "dropbox",
         "api",
@@ -34,12 +35,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Spatie\\Dropbox\\": "src"
+            "Wetmarble\\Dropbox\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Spatie\\Dropbox\\Test\\": "tests"
+            "Wetmarble\\Dropbox\\Test\\": "tests"
         }
     },
     "scripts": {
