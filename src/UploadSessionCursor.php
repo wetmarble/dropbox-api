@@ -1,6 +1,6 @@
 <?php
 
-namespace Spatie\Dropbox;
+namespace Wetmarble\Dropbox;
 
 class UploadSessionCursor
 {

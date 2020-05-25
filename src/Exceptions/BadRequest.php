@@ -1,6 +1,6 @@
 <?php
 
-namespace Spatie\Dropbox\Exceptions;
+namespace Wetmarble\Dropbox\Exceptions;
 
 use Exception;
 use Psr\Http\Message\ResponseInterface;

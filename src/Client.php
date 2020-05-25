@@ -1,6 +1,6 @@
 <?php
 
-namespace Spatie\Dropbox;
+namespace Wetmarble\Dropbox;
 
 use Exception;
 use GrahamCampbell\GuzzleFactory\GuzzleFactory;
@@ -12,7 +12,30 @@ use GuzzleHttp\Psr7\PumpStream;
 use GuzzleHttp\Psr7\StreamWrapper;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\StreamInterface;
-use Spatie\Dropbox\Exceptions\BadRequest;
+use Wetmarble\Dropbox\Exceptions\BadRequest;
+use Wetmarble\Dropbox\Models\AccessToken;
+use Wetmarble\Dropbox\Models\Account;
+use Wetmarble\Dropbox\Models\AccountList;
+use Wetmarble\Dropbox\Models\BaseModel;
+use Wetmarble\Dropbox\Models\CopyReference;
+use Wetmarble\Dropbox\Models\DeletedMetadata;
+use Wetmarble\Dropbox\Models\File;
+use Wetmarble\Dropbox\Models\FileMetadata;
+use Wetmarble\Dropbox\Models\FileSharingInfo;
+use Wetmarble\Dropbox\Models\FolderMetadata;
+use Wetmarble\Dropbox\Models\FolderSharingInfo;
+use Wetmarble\Dropbox\Models\MediaInfo;
+use Wetmarble\Dropbox\Models\MediaMetadata;
+use Wetmarble\Dropbox\Models\MetadataCollection;
+use Wetmarble\Dropbox\Models\ModelCollection;
+use Wetmarble\Dropbox\Models\ModelFactory;
+use Wetmarble\Dropbox\Models\ModelInterface;
+use Wetmarble\Dropbox\Models\PhotoMetadata;
+use Wetmarble\Dropbox\Models\SearchResult;
+use Wetmarble\Dropbox\Models\SearchResults;
+use Wetmarble\Dropbox\Models\TemporaryLink;
+use Wetmarble\Dropbox\Models\Thumbnail;
+use Wetmarble\Dropbox\Models\VideoMetadata;
 
 class Client
 {
@@ -237,7 +260,9 @@ class Client
             'path' => $this->normalizePath($path),
         ];
 
-        return $this->rpcEndpointRequest('files/get_metadata', $parameters);
+        $response = $this->rpcEndpointRequest('files/get_metadata', $parameters);
+
+        return ModelFactory::make($response);
     }
 
     /**
